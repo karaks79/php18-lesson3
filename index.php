@@ -4,46 +4,22 @@
 	
 	echo '1. Массивы зверей:';
 
-	$arr_afr = array();
-	$arr_afr[0] = 'Hexaprotodon liberiensis';
-	$arr_afr[1] = 'Potamochoerus porcus';
-	$arr_afr[2] = 'Antilopinae';
-	$arr_afr[3] = 'Viverra';
-	$arr_afr[4] = 'Syncerus caffer';
-
+	$arr_afr = array('Hexaprotodon liberiensis', 'Potamochoerus porcus', 'Antilopinae', 'Viverra', 'Syncerus caffer');
 	echo '<pre>';
 	print_r($arr_afr);
 	echo '</pre>';
 
-	$arr_asi = array();
-	$arr_asi[0] = 'Gavia adamsii';
-	$arr_asi[1] = 'Ardeola bacchus';
-	$arr_asi[2] = 'Dendrocopos leucotos';
-	$arr_asi[3] = 'Estrilda';
-	$arr_asi[4] = 'Delichon';
-
+	$arr_asi = array('Gavia adamsii', 'Ardeola bacchus', 'Dendrocopos leucotos', 'Estrilda', 'Delichon');
 	echo '<pre>';
 	print_r($arr_asi);
 	echo '</pre>';
 
-	$arr_eur = array();
-	$arr_eur[0] = 'Fringilla teydea';
-	$arr_eur[1] = 'Phylloscopus';
-	$arr_eur[2] = 'Uria';
-	$arr_eur[3] = 'Hemithraupis guira amazonica';
-	$arr_eur[4] = 'Pica';
-
+	$arr_eur = array('Fringilla teydea', 'Phylloscopus', 'Uria', 'Hemithraupis guira amazonica', 'Pica');
 	echo '<pre>';
 	print_r($arr_eur);
 	echo '</pre>';
 
-	$arr_ame = array();
-	$arr_ame[0] = 'Agamia';
-	$arr_ame[1] = 'Rollandia rolland';
-	$arr_ame[2] = 'Riparia  riparia';
-	$arr_ame[3] = 'Guira';
-	$arr_ame[4] = 'Merganetta armata ';
-
+	$arr_ame = array('Agamia', 'Rollandia rolland', 'Riparia  riparia', 'Guira', 'Merganetta armata ');
 	echo '<pre>';
 	print_r($arr_ame);
 	echo '</pre>';
@@ -60,6 +36,8 @@
 
 	// 2. Массив зверей из 2-х слов.
 	$arr_two = array();
+	$arr_first = array();
+	$arr_second = array();
 	foreach ($arr_cont as $cont => $value) {
 		foreach ($value as $key => $animal) {
 			$a1 = explode(' ', $animal);
@@ -71,6 +49,8 @@
 			}
 			if (count($a1) == 2) {
 				$arr_two[] = implode(' ',$a1);
+				$arr_first[] = $a1[0];
+				$arr_second[] = $a1[1];
 			}
 		}
 	}
@@ -82,14 +62,6 @@
 
 	// 3. Перемешать первые и вторые слова.
 	$arr_shuffle = array();
-	$arr_first = array();
-	$arr_second = array();
-	for ($i=0; $i<count($arr_two); $i++) 
-	{
-		$b1 = explode(' ',$arr_two[$i]);
-		$arr_first[] = $b1[0];
-		$arr_second[] = $b1[1];
-	}
 	shuffle($arr_first);
 	shuffle($arr_second);
 	for ($i=0; $i<count($arr_two); $i++)
@@ -101,11 +73,6 @@
 	echo '<pre>';
 	print_r($arr_shuffle);
 	echo '</pre>';
-
-	// echo '<pre>';
-	// print_r($arr_first);
-	// echo '</pre>';
-
 
 	// 4-5. Принадлежность регионам через запятую.
 	echo '4-5. Принадлежность регионам через запятую:';
