@@ -3,32 +3,13 @@
 	// 1. Массивы зверей.
 	
 	echo '1. Массивы зверей:';
-
-	$arr_afr = array('Hexaprotodon liberiensis', 'Potamochoerus porcus', 'Antilopinae', 'Viverra', 'Syncerus caffer');
-	echo '<pre>';
-	print_r($arr_afr);
-	echo '</pre>';
-
-	$arr_asi = array('Gavia adamsii', 'Ardeola bacchus', 'Dendrocopos leucotos', 'Estrilda', 'Delichon');
-	echo '<pre>';
-	print_r($arr_asi);
-	echo '</pre>';
-
-	$arr_eur = array('Fringilla teydea', 'Phylloscopus', 'Uria', 'Hemithraupis guira amazonica', 'Pica');
-	echo '<pre>';
-	print_r($arr_eur);
-	echo '</pre>';
-
-	$arr_ame = array('Agamia', 'Rollandia rolland', 'Riparia  riparia', 'Guira', 'Merganetta armata ');
-	echo '<pre>';
-	print_r($arr_ame);
-	echo '</pre>';
-
-	$arr_cont = array();
-	$arr_cont['africa'] = $arr_afr;
-	$arr_cont['asia'] = $arr_asi;
-	$arr_cont['europe'] = $arr_eur;
-	$arr_cont['america'] = $arr_ame;
+	$arr_cont = array
+	(
+		'africa' => array('Hexaprotodon liberiensis', 'Potamochoerus porcus', 'Antilopinae', 'Viverra', 'Syncerus caffer'),
+		'asia' => array('Gavia adamsii', 'Ardeola bacchus', 'Dendrocopos leucotos', 'Estrilda', 'Delichon'),
+		'europe' => array('Fringilla teydea', 'Phylloscopus', 'Uria', 'Hemithraupis guira amazonica', 'Pica'),
+		'america' => array('Agamia', 'Rollandia rolland', 'Riparia  riparia', 'Guira', 'Merganetta armata '),
+	);
 
 	echo '<pre>';
 	print_r($arr_cont);
@@ -40,13 +21,16 @@
 	$arr_second = array();
 	foreach ($arr_cont as $cont => $value) {
 		foreach ($value as $key => $animal) {
-			$a1 = explode(' ', $animal);
+			$s1 = trim($animal);
+			$a1 = explode(' ', $s1);
 			// Убираем лишние пробелы
-			foreach ($a1 as $k => $v) {
-				if ($v == '') {
-					unset($a1[$k]);
-				}
-			}
+
+			// Без этого цикла элемент массива 'Riparia  riparia' из 2-х слов ошибочно выпадает из алгоритма, т.к. между словами - 2 пробела.
+			// foreach ($a1 as $k => $v) {
+			// 	if ($v == '') {
+			// 		unset($a1[$k]);
+			// 	}
+			// }
 			if (count($a1) == 2) {
 				$arr_two[] = implode(' ',$a1);
 				$arr_first[] = $a1[0];
